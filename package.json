@@ -17,7 +17,7 @@
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/endimion/Diploma_Supplement"
+    "url": "https://github.com/endimion/DipSupUnivMonitorApp"
   },
   "license": "Apache-2.0",
   "dependencies": {
@@ -29,6 +29,7 @@
     "express-session": "^1.15.3",
     "hash.js": "^1.0.3",
     "hfc": "^0.6.5",
+    "mongoose": "^4.10.8",
     "nodemailer": "^4.0.1",
     "nonce": "^1.0.4",
     "pug": "^2.0.0-rc.1",
