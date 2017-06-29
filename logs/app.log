@@ -1,0 +1,104 @@
+[2017-06-28 16:33:54.610] [INFO] log - 
+Found chaincodeID 0df661192a330f3632545b12bab303b5df34857137bbcd501201c6b70509044d
+[2017-06-28 16:34:40.481] [INFO] log - Custom event received, payload: "{\"Message\":\"Tx chaincode finished OK.\",\"Body\":{\"Name\":\"testName\",\"Eid\":\"testEid\",\"Email\":\"testEmail\",\"UniId\":\"testUniId\",\"EidHash\":\"testEidHash\",\"University\":\"testUniversity\"},\"TxId\":\"fd98d6e5-bf42-41bb-8b53-f166751ec9f2\"}"
+
+[2017-06-28 16:34:40.710] [INFO] log - success
+[2017-06-28 16:34:40.712] [INFO] log - seqExecHlfServiceCalls:: will call with
+[2017-06-28 16:34:40.722] [INFO] log - [ { _id: 595281ba543cff2403e556e5,
+    name: 'testName',
+    uniId: 'testUniId',
+    surname: 'surname',
+    university: 'testUniversity',
+    __v: 0 } ]
+[2017-06-28 16:34:40.798] [INFO] log - 
+Enrolled admin sucecssfully with attributes
+[2017-06-28 16:34:40.799] [INFO] log - [ { name: 'typeOfUser', value: 'University' },
+  { name: 'eID', value: 'testUniversity' } ]
+[2017-06-28 16:34:40.815] [INFO] log - 
+Enrolled and registered testUniversity successfully
+[2017-06-28 16:34:40.817] [INFO] log - will send invoke request:
+
+[2017-06-28 16:34:40.818] [INFO] log - { chaincodeID: '0df661192a330f3632545b12bab303b5df34857137bbcd501201c6b70509044d',
+  fcn: 'publish',
+  args: [ '{"Owner":"testUniId","Name":"testName","Surname":"surname","University":"testUniversity","Authorized":[],"Id":"595281ba543cff2403e556e5","Signature":"11082ed8e50540ab5647f062cc2bff3c227230c15b7eb421a4106a98c6b289c74fe842781f94e801933b94fb92acdd5eab8752658f866429787fc00a0a914088dc592896b27fb1d3be2f8e42b99dde8e64eca0b0922680e29167a178279ce329214b84f12d215f4ca86ad2c4fd0f1c51f25e5ace25648df759f5d630cc21ecf00f0a202da682a87c92bf2319fe93030c1103bbdcb51375f857a83ee6f1f087a72bbbf3a4a1d0bb8d8758ef6949bff72bcec2a097a01c8bc884833ca4dd93a099dca869b2a897436999cb33c369e12742b8321a5239ff8154bedd6542c23860ff3a8acf7ead442ff7b4c6e664a8effbf2ad19db0c9d04b8e74e3330e0e0a3f997"}' ],
+  attrs: [ 'typeOfUser', 'eID' ] }
+[2017-06-28 16:34:50.232] [INFO] log - 
+Successfully submitted chaincode invoke transaction: request={"chaincodeID":"0df661192a330f3632545b12bab303b5df34857137bbcd501201c6b70509044d","fcn":"publish","args":["{\"Owner\":\"testUniId\",\"Name\":\"testName\",\"Surname\":\"surname\",\"University\":\"testUniversity\",\"Authorized\":[],\"Id\":\"595281ba543cff2403e556e5\",\"Signature\":\"11082ed8e50540ab5647f062cc2bff3c227230c15b7eb421a4106a98c6b289c74fe842781f94e801933b94fb92acdd5eab8752658f866429787fc00a0a914088dc592896b27fb1d3be2f8e42b99dde8e64eca0b0922680e29167a178279ce329214b84f12d215f4ca86ad2c4fd0f1c51f25e5ace25648df759f5d630cc21ecf00f0a202da682a87c92bf2319fe93030c1103bbdcb51375f857a83ee6f1f087a72bbbf3a4a1d0bb8d8758ef6949bff72bcec2a097a01c8bc884833ca4dd93a099dca869b2a897436999cb33c369e12742b8321a5239ff8154bedd6542c23860ff3a8acf7ead442ff7b4c6e664a8effbf2ad19db0c9d04b8e74e3330e0e0a3f997\"}"],"attrs":["typeOfUser","eID"]}, response={"uuid":"0303c67a-bedd-4d0b-b408-2513dff86f38"}
+[2017-06-28 16:34:51.256] [INFO] log - 
+Successfully completed chaincode invoke transaction: request={"chaincodeID":"0df661192a330f3632545b12bab303b5df34857137bbcd501201c6b70509044d","fcn":"publish","args":["{\"Owner\":\"testUniId\",\"Name\":\"testName\",\"Surname\":\"surname\",\"University\":\"testUniversity\",\"Authorized\":[],\"Id\":\"595281ba543cff2403e556e5\",\"Signature\":\"11082ed8e50540ab5647f062cc2bff3c227230c15b7eb421a4106a98c6b289c74fe842781f94e801933b94fb92acdd5eab8752658f866429787fc00a0a914088dc592896b27fb1d3be2f8e42b99dde8e64eca0b0922680e29167a178279ce329214b84f12d215f4ca86ad2c4fd0f1c51f25e5ace25648df759f5d630cc21ecf00f0a202da682a87c92bf2319fe93030c1103bbdcb51375f857a83ee6f1f087a72bbbf3a4a1d0bb8d8758ef6949bff72bcec2a097a01c8bc884833ca4dd93a099dca869b2a897436999cb33c369e12742b8321a5239ff8154bedd6542c23860ff3a8acf7ead442ff7b4c6e664a8effbf2ad19db0c9d04b8e74e3330e0e0a3f997\"}"],"attrs":["typeOfUser","eID"]}, response={"result":"Tx 0303c67a-bedd-4d0b-b408-2513dff86f38 complete"}
+[2017-06-28 16:34:51.264] [INFO] log - Custom event received, payload: "No Publication Request Found fortestUniId \n testUniversity.0303c67a-bedd-4d0b-b408-2513dff86f38"
+
+[2017-06-28 16:53:47.142] [INFO] log - 
+Found chaincodeID 0df661192a330f3632545b12bab303b5df34857137bbcd501201c6b70509044d
+[2017-06-28 16:54:07.548] [INFO] log - Custom event received, payload: "{\"Message\":\"Tx chaincode finished OK.\",\"Body\":{\"Name\":\"testName\",\"Eid\":\"testEid\",\"Email\":\"testEmail\",\"UniId\":\"testUniId\",\"EidHash\":\"testEidHash\",\"University\":\"testUniversity\"},\"TxId\":\"28e152f3-2d11-42ea-bdf3-32f341dd4a18\"}"
+
+[2017-06-28 16:54:07.669] [INFO] log - success
+[2017-06-28 16:54:07.677] [INFO] log - seqExecHlfServiceCalls:: will call with
+[2017-06-28 16:54:07.680] [INFO] log - [ { Owner: 'testEidHash',
+    Name: 'testName',
+    Surname: 'surname',
+    University: 'testUniversity',
+    Authorized: [],
+    Id: 595281ba543cff2403e556e5 } ]
+[2017-06-28 16:54:07.752] [INFO] log - 
+Enrolled admin sucecssfully with attributes
+[2017-06-28 16:54:07.753] [INFO] log - [ { name: 'typeOfUser', value: 'University' },
+  { name: 'eID', value: 'testUniversity' } ]
+[2017-06-28 16:54:07.762] [INFO] log - 
+Enrolled and registered testUniversity successfully
+[2017-06-28 16:54:07.776] [INFO] log - will send invoke request:
+
+[2017-06-28 16:54:07.778] [INFO] log - { chaincodeID: '0df661192a330f3632545b12bab303b5df34857137bbcd501201c6b70509044d',
+  fcn: 'publish',
+  args: [ '{"Owner":"testEidHash","Name":"testName","Surname":"surname","University":"testUniversity","Authorized":[],"Id":"595281ba543cff2403e556e5","Signature":"af82d9ced39c9ecf447b9d0ced57721103573839c3d154374b5b8f6a413b7b7f57a7ab29502395ccfdff4a799cc02dcfe60e9b5d8d6bb1fca858e87df26c8504ef57f282c02701b5bd2dd507ff884d795267dab63a9518f5f82b115b5ab061675ced8640d44da37cd0890862fb055869eee4e320613e30149e37f63510d33abbe87d7494835ac29731517ab39e7f693e45e71f49e784bad5bf74b785cb2dbe4673de3e03696ecbd7c263e33aa57fe4fb63c7ae18a89d59b7b87bfd373f98041404b5a0338bfc5ab9fb0956adcffd01397f32c951114c11fdda4440a7abe18d31986e094497b19e041fc0b6af37de36593e37f459c1a9d434a0e87009b0c82bc7"}' ],
+  attrs: [ 'typeOfUser', 'eID' ] }
+[2017-06-28 16:54:16.311] [INFO] log - 
+Successfully submitted chaincode invoke transaction: request={"chaincodeID":"0df661192a330f3632545b12bab303b5df34857137bbcd501201c6b70509044d","fcn":"publish","args":["{\"Owner\":\"testEidHash\",\"Name\":\"testName\",\"Surname\":\"surname\",\"University\":\"testUniversity\",\"Authorized\":[],\"Id\":\"595281ba543cff2403e556e5\",\"Signature\":\"af82d9ced39c9ecf447b9d0ced57721103573839c3d154374b5b8f6a413b7b7f57a7ab29502395ccfdff4a799cc02dcfe60e9b5d8d6bb1fca858e87df26c8504ef57f282c02701b5bd2dd507ff884d795267dab63a9518f5f82b115b5ab061675ced8640d44da37cd0890862fb055869eee4e320613e30149e37f63510d33abbe87d7494835ac29731517ab39e7f693e45e71f49e784bad5bf74b785cb2dbe4673de3e03696ecbd7c263e33aa57fe4fb63c7ae18a89d59b7b87bfd373f98041404b5a0338bfc5ab9fb0956adcffd01397f32c951114c11fdda4440a7abe18d31986e094497b19e041fc0b6af37de36593e37f459c1a9d434a0e87009b0c82bc7\"}"],"attrs":["typeOfUser","eID"]}, response={"uuid":"00192ea5-08a4-4d47-80b6-5c37b8d49684"}
+[2017-06-28 16:54:17.412] [INFO] log - 
+Successfully completed chaincode invoke transaction: request={"chaincodeID":"0df661192a330f3632545b12bab303b5df34857137bbcd501201c6b70509044d","fcn":"publish","args":["{\"Owner\":\"testEidHash\",\"Name\":\"testName\",\"Surname\":\"surname\",\"University\":\"testUniversity\",\"Authorized\":[],\"Id\":\"595281ba543cff2403e556e5\",\"Signature\":\"af82d9ced39c9ecf447b9d0ced57721103573839c3d154374b5b8f6a413b7b7f57a7ab29502395ccfdff4a799cc02dcfe60e9b5d8d6bb1fca858e87df26c8504ef57f282c02701b5bd2dd507ff884d795267dab63a9518f5f82b115b5ab061675ced8640d44da37cd0890862fb055869eee4e320613e30149e37f63510d33abbe87d7494835ac29731517ab39e7f693e45e71f49e784bad5bf74b785cb2dbe4673de3e03696ecbd7c263e33aa57fe4fb63c7ae18a89d59b7b87bfd373f98041404b5a0338bfc5ab9fb0956adcffd01397f32c951114c11fdda4440a7abe18d31986e094497b19e041fc0b6af37de36593e37f459c1a9d434a0e87009b0c82bc7\"}"],"attrs":["typeOfUser","eID"]}, response={"result":"Tx 00192ea5-08a4-4d47-80b6-5c37b8d49684 complete"}
+[2017-06-28 16:54:17.418] [INFO] log - Custom event received, payload: "{\"Message\":\"Tx chaincode finished OK.\",\"Body\":{\"Name\":\"\",\"Eid\":\"\",\"Email\":\"\",\"UniId\":\"\",\"EidHash\":\"\",\"University\":\"\"},\"TxId\":\"00192ea5-08a4-4d47-80b6-5c37b8d49684\"}"
+
+[2017-06-28 16:54:17.423] [INFO] log - Custom event received, payload: "{\"Message\":\"Tx chaincode finished OK.\",\"Body\":{\"Name\":\"\",\"Eid\":\"\",\"Email\":\"\",\"UniId\":\"\",\"EidHash\":\"\",\"University\":\"\"},\"TxId\":\"00192ea5-08a4-4d47-80b6-5c37b8d49684\"}"
+
+[2017-06-28 16:54:17.451] [INFO] log - the response is: 
+
+[2017-06-28 16:54:17.452] [INFO] log - Tx chaincode finished OK.
+[2017-06-28 16:54:17.457] [INFO] log - seqExecHlfServiceCalls:: will call with
+[2017-06-28 16:54:17.458] [INFO] log - []
+[2017-06-29 13:15:55.299] [INFO] log - Custom event received, payload: "{\"Message\":\"Tx chaincode finished OK.\",\"Body\":{\"Name\":\"testName\",\"Eid\":\"testEid\",\"Email\":\"testEmail\",\"UniId\":\"testUniId\",\"EidHash\":\"testEidHash\",\"University\":\"testUniversity\"},\"TxId\":\"358e12c4-e7ee-4fa0-98b2-7517e17d5a15\"}"
+
+[2017-06-29 13:15:55.480] [INFO] log - success
+[2017-06-29 13:15:55.482] [INFO] log - seqExecHlfServiceCalls:: will call with
+[2017-06-29 13:15:55.483] [INFO] log - [ { Owner: 'testEidHash',
+    Name: 'testName',
+    Surname: 'surname',
+    University: 'testUniversity',
+    Authorized: [],
+    Id: 595281ba543cff2403e556e5 } ]
+[2017-06-29 13:15:55.578] [INFO] log - 
+Enrolled admin sucecssfully with attributes
+[2017-06-29 13:15:55.579] [INFO] log - [ { name: 'typeOfUser', value: 'University' },
+  { name: 'eID', value: 'testUniversity' } ]
+[2017-06-29 13:15:55.582] [INFO] log - 
+Enrolled and registered testUniversity successfully
+[2017-06-29 13:15:55.583] [INFO] log - will send invoke request:
+
+[2017-06-29 13:15:55.583] [INFO] log - { chaincodeID: '0df661192a330f3632545b12bab303b5df34857137bbcd501201c6b70509044d',
+  fcn: 'publish',
+  args: [ '{"Owner":"testEidHash","Name":"testName","Surname":"surname","University":"testUniversity","Authorized":[],"Id":"595281ba543cff2403e556e5","Signature":"4752eb199c383e08a7ef47078724c769b432a572fdcf366e761be785ca8db39ced28f94a97b69df1966037566769cb3b724eb0566f628c4a8b35f3deea55eeeb5c77d92dc24c824afc0322e06e0c6fce5683219bd99ab654c6c058c7ad4e389d90bfcb4dc5b4eac7a5423b283227c00ec5e54d58658c309121ecd2a26b06f625a894efff689a67090e976a39868b65fda3bd0eed4e6da6bbe9ed11a8d2fb403ce7cc69a98cf5ba337280439967ef583941f502ff9db3ecaf7edaeaa61271a2e8af17aeeefc7628d45ceab2406891d32993bd972cd6599495c6227d6ea4bf639220e771c3bf49795d5a021314f195eb895baa52dbc9b92a6af2bc9800bd5cfe4f"}' ],
+  attrs: [ 'typeOfUser', 'eID' ] }
+[2017-06-29 13:15:55.632] [INFO] log - 
+Successfully submitted chaincode invoke transaction: request={"chaincodeID":"0df661192a330f3632545b12bab303b5df34857137bbcd501201c6b70509044d","fcn":"publish","args":["{\"Owner\":\"testEidHash\",\"Name\":\"testName\",\"Surname\":\"surname\",\"University\":\"testUniversity\",\"Authorized\":[],\"Id\":\"595281ba543cff2403e556e5\",\"Signature\":\"4752eb199c383e08a7ef47078724c769b432a572fdcf366e761be785ca8db39ced28f94a97b69df1966037566769cb3b724eb0566f628c4a8b35f3deea55eeeb5c77d92dc24c824afc0322e06e0c6fce5683219bd99ab654c6c058c7ad4e389d90bfcb4dc5b4eac7a5423b283227c00ec5e54d58658c309121ecd2a26b06f625a894efff689a67090e976a39868b65fda3bd0eed4e6da6bbe9ed11a8d2fb403ce7cc69a98cf5ba337280439967ef583941f502ff9db3ecaf7edaeaa61271a2e8af17aeeefc7628d45ceab2406891d32993bd972cd6599495c6227d6ea4bf639220e771c3bf49795d5a021314f195eb895baa52dbc9b92a6af2bc9800bd5cfe4f\"}"],"attrs":["typeOfUser","eID"]}, response={"uuid":"4570ff36-b1b6-4a2e-bf6a-0fd37d62916b"}
+[2017-06-29 13:15:56.744] [INFO] log - 
+Successfully completed chaincode invoke transaction: request={"chaincodeID":"0df661192a330f3632545b12bab303b5df34857137bbcd501201c6b70509044d","fcn":"publish","args":["{\"Owner\":\"testEidHash\",\"Name\":\"testName\",\"Surname\":\"surname\",\"University\":\"testUniversity\",\"Authorized\":[],\"Id\":\"595281ba543cff2403e556e5\",\"Signature\":\"4752eb199c383e08a7ef47078724c769b432a572fdcf366e761be785ca8db39ced28f94a97b69df1966037566769cb3b724eb0566f628c4a8b35f3deea55eeeb5c77d92dc24c824afc0322e06e0c6fce5683219bd99ab654c6c058c7ad4e389d90bfcb4dc5b4eac7a5423b283227c00ec5e54d58658c309121ecd2a26b06f625a894efff689a67090e976a39868b65fda3bd0eed4e6da6bbe9ed11a8d2fb403ce7cc69a98cf5ba337280439967ef583941f502ff9db3ecaf7edaeaa61271a2e8af17aeeefc7628d45ceab2406891d32993bd972cd6599495c6227d6ea4bf639220e771c3bf49795d5a021314f195eb895baa52dbc9b92a6af2bc9800bd5cfe4f\"}"],"attrs":["typeOfUser","eID"]}, response={"result":"Tx 4570ff36-b1b6-4a2e-bf6a-0fd37d62916b complete"}
+[2017-06-29 13:15:56.748] [INFO] log - Custom event received, payload: "{\"Message\":\"Tx chaincode finished OK.\",\"Body\":{\"Name\":\"\",\"Eid\":\"\",\"Email\":\"\",\"UniId\":\"\",\"EidHash\":\"\",\"University\":\"\"},\"TxId\":\"4570ff36-b1b6-4a2e-bf6a-0fd37d62916b\"}"
+
+[2017-06-29 13:15:56.756] [INFO] log - Custom event received, payload: "{\"Message\":\"Tx chaincode finished OK.\",\"Body\":{\"Name\":\"\",\"Eid\":\"\",\"Email\":\"\",\"UniId\":\"\",\"EidHash\":\"\",\"University\":\"\"},\"TxId\":\"4570ff36-b1b6-4a2e-bf6a-0fd37d62916b\"}"
+
+[2017-06-29 13:15:56.757] [INFO] log - the response is: 
+
+[2017-06-29 13:15:56.761] [INFO] log - Tx chaincode finished OK.
+[2017-06-29 13:15:56.761] [INFO] log - seqExecHlfServiceCalls:: will call with
+[2017-06-29 13:15:56.784] [INFO] log - []
+[2017-06-29 13:19:30.803] [INFO] log - 
+Found chaincodeID 0df661192a330f3632545b12bab303b5df34857137bbcd501201c6b70509044d

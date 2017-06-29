@@ -7,26 +7,28 @@ const chainCodeQuery = require('../ChaincodeQuery.js');
 const supUtils = require('../utils/SupplementUtils.js');
 const util = require('util');
 const signService = require('../service/SignService');
+const log4js = require('log4js');
+log4js.configure({
+  appenders: [
+    { type: 'console' },
+    { type: 'file', filename: 'logs/app.log', category: 'log' }
+  ]
+});
+const logger = log4js.getLogger('log');
 
 //pusblishes a diploma supplement on the blockchain
 // from the data it retrieved from the database
-exports.publishSupplement = function(dbDipSup, user){
+exports.publishSupplement = function(supplement, user){
 
   return new Promise(function(resolve,reject){
-    let owner =dbDipSup.uniId;
-    let university =dbDipSup.university;
-    let _id = dbDipSup._id.valueOf();
-    let name = dbDipSup.name;
-    let surname =dbDipSup.surname;
-
-    let supplement = {
-        "Owner": owner,
-        "Name": name,
-        "Surname": surname,
-        "University": university,
-        "Authorized": [],
-        "Id" : _id
-    }
+    // let supplement = {
+    //     "Owner": owner,
+    //     "Name": name,
+    //     "Surname": surname,
+    //     "University": university,
+    //     "Authorized": [],
+    //     "Id" : _id
+    // }
     let supString = JSON.stringify(supplement);
     let signature = signService.signHash(supUtils.generateSupplementHash(supString))
     supplement.Signature = signature;
@@ -45,7 +47,7 @@ exports.publishSupplement = function(dbDipSup, user){
     };
 
     let publishFnc = invokeCurryPromise(publishReq);
-    // console.log("invokeCurryPromise");
+    // logger.info("invokeCurryPromise");
     let tryToPublish = makeHfcCall(publishFnc,10,resolve,reject,user,_enrollAttr);
     tryToPublish();
   });
@@ -63,16 +65,16 @@ exports.publishSupplement = function(dbDipSup, user){
 function invokeCurryPromise(invRequest){
   return function(user){
     return  new Promise(function(resolve,reject){
-      console.log("will send invoke request:\n");
-      console.log(invRequest);
+      logger.info("will send invoke request:\n");
+      logger.info(invRequest);
       basic.invoke(user,invRequest)
       .then(rsp => {
-        console.log("the response is: \n");
-        console.log(rsp);
+        logger.info("the response is: \n");
+        logger.info(rsp);
         resolve(rsp);
       }).catch(err => {
-          console.log("the error is: \n");
-        console.log(err);
+          logger.info("the error is: \n");
+        logger.info(err);
         reject(err)
       });
     });
@@ -92,7 +94,7 @@ closure to include a counter, to attempt to publish for a max of 10 times;
 function makeHfcCall(hfcFunc,times,successCallback,failureCallback,user,enrollAttributes){
   return (function(){
       let counter = 0;
-      // console.log("hfcFunc,times,retryFunction,successCallback,failureCallback");
+      // logger.info("hfcFunc,times,retryFunction,successCallback,failureCallback");
       let innerFunction = function(){
           // firstStep(user,enrollAttributes)
           basic.enrollAndRegisterUsers(user,enrollAttributes)
@@ -103,19 +105,19 @@ function makeHfcCall(hfcFunc,times,successCallback,failureCallback,user,enrollAt
           })
           .catch(err =>{
             if(counter < times){
-              console.log("AN ERROR OCCURED!!! atempt:"+counter+"\n");
-              console.log(err);
+              logger.info("AN ERROR OCCURED!!! atempt:"+counter+"\n");
+              logger.info(err);
               counter ++;
               innerFunction();
             }else{
-              console.log("HfcService");
-              console.log(err);
+              logger.info("HfcService");
+              logger.info(err);
               // failureCallback("failed, to get  supplements after " + counter + " attempts");
               try{
                 let error = JSON.parse(util.format("%j",err));
                 failureCallback(error.msg);
               }catch(e){
-                console.log(e);
+                logger.info(e);
                 failureCallback(util.format("%j",err));
               }
             }

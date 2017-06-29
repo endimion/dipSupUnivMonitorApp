@@ -8,7 +8,14 @@ const fs = require('fs');
 const dsService  = require('./service/DSService');
 const hlfService = require('./service/HfcService');
 const basic = require('./basicFunctions');
-
+const log4js = require('log4js');
+log4js.configure({
+  appenders: [
+    { type: 'console' },
+    { type: 'file', filename: 'logs/app.log', category: 'log' }
+  ]
+});
+const logger = log4js.getLogger('log');
 // chain.setKeyValStore( hfc.newFileKeyValStore(__dirname+'/tmp/keyValStore') );
 //
 // // Set the URL for member services
@@ -25,29 +32,41 @@ const basic = require('./basicFunctions');
   basic.init();
 
  let evHub = basic.config.chain.getEventHub();
- let envtId = evHub.registerChaincodeEvent(getChainCodeIDfromCLIArgs(), "evtsender", function(event) {
-   console.log(util.format("Custom event received, payload: %j\n", event.payload.toString()));
+ let envtId = evHub.registerChaincodeEvent(process.env.CHAINCODE_ID, "evtsender", function(event) {
+   logger.info(util.format("Custom event received, payload: %j\n", event.payload.toString()));
    let eventJSON = JSON.parse(event.payload.toString());
    let eventBODY = eventJSON.Body;
    let eventTXID = eventJSON.TxId;
 
    if(eventBODY && eventBODY.UniId){
-     let query = dsService.findAllDiplomaByCriterria(eventBODY).then(resp =>{
-         console.log("success")  ;
+     let query = dsService.findAllDiplomaByCriterria(eventBODY).then(supFromDb =>{
+         logger.info("success")  ;
         // //Get unique supplement requests
         // let uniqueUniIds = [...new Set(resp.map(item => item.UniId))];
         // //filter to get only the unique supplement Requests based on the university ID
         let added = [];
-        let uniqueSupRequests = [...resp.filter(sup => {
+        let uniqueSupRequests = [...supFromDb.filter(sup => {
               if(added.indexOf(sup.UniId) < 0){
                 added.push(sup.UniId);
                 return true;
               }
               return false;
-         })];
+         })].map(dbDipSup =>{
+              //map the supplement from the DB to a full DiplomaSupplement Structure
+              //owner value, denotes the eidas eid,  is retreived from the event,
+              // the val. does not exist in the db
+              return {
+                "Owner" : eventBODY.EidHash,
+                "Name" : dbDipSup.name,
+                "Surname" : dbDipSup.surname,
+                "University" : dbDipSup.university,
+                "Authorized" : [],
+                "Id" :  dbDipSup._id.valueOf()
+              }
+        });
         seqExecHlfServiceCalls(uniqueSupRequests);
      }).catch(err=>{
-         console.log(err);
+         logger.info(err);
      });
    }
  });
@@ -57,8 +76,8 @@ const basic = require('./basicFunctions');
 
 
 function seqExecHlfServiceCalls(arrayOfSupplements){
-      console.log("seqExecHlfServiceCalls:: will call with")  ;
-      console.log(arrayOfSupplements);
+      logger.info("seqExecHlfServiceCalls:: will call with")  ;
+      logger.info(arrayOfSupplements);
      if(arrayOfSupplements.length > 0){
        hlfService.publishSupplement(arrayOfSupplements[arrayOfSupplements.length -1],"testUniversity")
        .then(resp => {
@@ -79,7 +98,7 @@ function seqExecHlfServiceCalls(arrayOfSupplements){
 function getChainCodeIDfromCLIArgs(){
     return process.argv[2]  ;
     // process.argv.forEach(function (val, index, array) {
-    //   console.log("asdfsad");
-    //   console.log(index + ': ' + val);
+    //   logger.info("asdfsad");
+    //   logger.info(index + ': ' + val);
     // });
 }

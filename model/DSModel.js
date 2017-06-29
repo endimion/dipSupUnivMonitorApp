@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
-let connection = mongoose.connect('mongodb://localhost/dipSup');
+let connection = mongoose.connect('mongodb://mongo/dipSup');
 mongoose.Promise = Promise;
 
 
